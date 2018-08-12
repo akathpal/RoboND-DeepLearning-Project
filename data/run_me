@@ -4,9 +4,11 @@ read -p "Select 1 for my_data and 2 for udacity_sample_data and 3 for removing d
 
 if [ "$input_choice" = "1" ]
 then
-    wget -O my_data.tar.gz "https://drive.google.com/uc?export=download&id=19qF1MzXtXXOGNWljZjV0XR8Mk7mHNnOW"
-    tar -xzf my_data.tar.gz
-    rm -rf my_data.tar.gz
+    wget -O followme_data.tar.gz "https://drive.google.com/uc?export=download&id=1YgZYH7uFL5ouSFhUqyfOsO-YlfRo9EJo"
+    tar -xzf followme_data.tar.gz
+    rm -rf followme_data.tar.gz
+    mv followme_data/* .
+    rm -rf followme_data
 elif [ "$input_choice" = "2" ]
 then
     wget -O udacity_data.tar.gz "https://drive.google.com/uc?export=download&id=1bradvxaHYnn2HB2V7q7ZUKaIIBjyDIOC"     	  
