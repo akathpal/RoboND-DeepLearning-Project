@@ -43,9 +43,38 @@ Although, I was getting accuracy more than 40% but I wanted to collect additiona
 The next step after collecting the data is to preprocess the data which converts the depth masks into binary masks suitable for training the neural network. In our case, we dont require any depth information of how far the target is in the image. Our goal is to just detect if there are pixels similar to target in the image or not. 
 Image preprocess function also converts png to jpeg format for reducing the size of the dataset.
 
-## Model Arhitecture
+## Model Architecture
 
 The next step is to make a fully concolution network(FCN) model. FCN model consists of mainly three parts: encoder, 1x1 convolution layer and decoder layer. 
+
+|Layer (type)            |  Output Shape       |     Param #|   
+| :----------------------|:-------------------:| ----------:|
+|input_1 (InputLayer)    | (None, 160, 160, 3) |       0    |    
+|separable_conv2d_keras_1| (None, 80, 80, 64)  |       283  |    
+|batch_normalization_1   |(None, 80, 80, 64)   |     256    |   
+|separable_conv2d_keras_2|(None, 40, 40, 128)  |8896        |
+|batch_normalization_2   |(None, 40, 40, 128)  | 512        |       
+|conv2d_1 (Conv2D)       |  (None, 40, 40, 256)|       33024|     
+|batch_normalization_3   |(None, 40, 40, 256)  |       1024 |     
+| bilinear_up_sampling2d_1 |(None, 80, 80, 256)  |     0      |   
+|concatenate_1            | (None, 80, 80, 320) |     0      |   
+|separable_conv2d_keras_3 |(None, 80, 80, 128)  |    43968   |  
+|batch_normalization_4    |(None, 80, 80, 128)  |    512     |  
+|separable_conv2d_keras_4 |(None, 80, 80, 128)  |    17664   |  
+|batch_normalization_5    |(None, 80, 80, 128)  |    512     |  
+|bilinear_up_sampling2d_2 |(None, 160, 160, 128)|    0       |  
+|concatenate_2            |(None, 160, 160, 131)|     0      |   
+|separable_conv2d_keras_5 |(None, 160, 160, 64) |     9627   |  
+|batch_normalization_6    |(None, 160, 160, 64) |    256     |  
+|separable_conv2d_keras_6 | (None, 160, 160, 64)|     4736   |    
+|batch_normalization_7    |(None, 160, 160, 64) |    256     |  
+|conv2d_2 (Conv2D)        |  (None, 160, 160, 3)|      195   |    
+
+=================================================================
+
+Total params: 121,721
+Trainable params: 120,057
+Non-trainable params: 1,664
 
 ## Hyper Parameters
 
