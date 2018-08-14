@@ -1,8 +1,6 @@
 [![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
-[image_0]: ./docs/misc/train1.png
-[image_1]: ./docs/misc/train2.png
-[image_2]: ./docs/misc/train3.png
-[image_3]: ./docs/misc/follow.png
+
+
 
 
 ## Deep Learning Follow Me Project Solution ##
@@ -31,10 +29,13 @@ Select 1 for downloading my training data and 2 for udacity training data.
 
 Although, I was getting accuracy more than 40% but I wanted to collect additional data because that is also an important step of implementing deep learning project. So, I choose the approach for collecting more data mentioned in the lectures such as zig-zag motion (for capturing view of target from all directions), target in a cluttered environment with more people and getting images while on patrol. All these scenes with the patrol points, hero path and people spawn points are shown in figures below.
 
+[image_0]: ./docs/misc/train1.png
 ![alt text][image_0] 
 
-![alt text][image_1] 
-
+[image_1]: ./docs/misc/train2.png
+![alt text][image_1]
+ 
+[image_2]: ./docs/misc/train3.png
 ![alt text][image_2] 
 
 ## Image Preprocessing
@@ -60,4 +61,5 @@ $ python follower.py my_amazing_model.h5
 
 The output of my final testing in simulator is shown below:
 
+[image_3]: ./docs/misc/follow.png
 ![alt text][image_3]
