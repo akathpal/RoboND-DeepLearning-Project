@@ -60,6 +60,10 @@ I have used 64 and 128 for filters.
 #### 1x1 Convolution
 This is very important layer. It makes the model deeper and have more parameters. These are also very less computationally intensive because they are just matrix multiplications. These concolutions require a kernel and stride of 1. I have used filters of depth 256.
 
+Why 1x1 Convolution Layer is used over fully-connected layer?
+
+Our goal in this project is to determine where is the target in the image, so that we can follow it. We want to preserve spatial information. Fully Connected layers don't preserve spatial information. On the other hand, convolution layers preserve spatial information. One more advantage of using convolution layer instead of full-connected is that we can give inputs of any size. So, this is the main reason of using convolutional layers instead of fully-connected layers. The output tensor of convolution layer is 4D as you can see from model summary where as the fully-connected layers, the output flattens and no spatial information of pixels is there.
+
 #### Decoder
 Decoder consists of bilinear upsampling layer, concatenation layer and 2 separable convolution layers. Decoder block scales the low resolution to original resolution as same as input, this helps network to classify all the pixels. To recover the spatial information properly, skip connections are used. Output of pooling layer from encoders is connected to decoder layers. This helps network to use multiple resolution data for recovering spatial information. This is done by concatenate function.
 
